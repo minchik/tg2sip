@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  tg2sip:
+    build: ./
+    container_name: tg2sip
+    image: tg2sip
+    volumes: 
+      - /opt/tg2sip/db:/app/db
+    networks: 
+      - telegram
+
+networks: 
+  telegram:
+    external: true

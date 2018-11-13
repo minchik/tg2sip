@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
@@ -28,7 +28,7 @@ RUN git clone https://github.com/tdlib/td.git \
 
 COPY config_site.h /
 
-RUN git clone https://github.com/Infactum/pjproject.git \
+RUN git clone https://github.com/minchik/pjproject.git \
     && cd pjproject \
     && cp /config_site.h pjlib/include/pj \
     && ./configure --disable-sound CFLAGS="-O3 -DNDEBUG" \
@@ -45,3 +45,4 @@ RUN git clone -n https://github.com/gabime/spdlog.git \
     && cmake --build . --target install \
     && cd / \
     && rm -rf spdlog
+
