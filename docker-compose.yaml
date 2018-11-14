@@ -2,13 +2,15 @@ version: '3'
 
 services:
   tg2sip:
-    build: ./
+    build:
+      context: ./
     container_name: tg2sip
     image: tg2sip
     volumes: 
-      - /opt/tg2sip/db:/app/db
+      - "${DB_LOCATION}:/app/db"
     networks: 
       - telegram
+    restart: always
 
 networks: 
   telegram:
